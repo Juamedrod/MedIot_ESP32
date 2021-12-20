@@ -9,6 +9,8 @@ const char *password = "yR4reQ59TUn5eggk2ieq";
 const int analGPIO = 34;
 float potValue = 0;
 String bulb="false";
+String baseURL="https://mediot.herokuapp.com";
+String dId="potenciometer";
 
 /*EXECUTED AT START*/
 void setup()
@@ -60,7 +62,7 @@ void GetPetition(){
     /*Instantiate httpClient*/
     HTTPClient http;
   
-    http.begin("http://192.168.1.39:3000/api/data/boolean/tambure/bulb");
+    http.begin(baseURL+"/api/data/boolean/"+dId+"/bulb");
     
     /*WE SET THE HEADERS FOR THE PETITION, THIS IS KEY TO HAVE A GOOD DATA CORRELATION BETWEEN THE DEVICE AND THE SERVER*/
     http.addHeader("Content-Type", "application/json; charset=utf-8"); 
@@ -90,7 +92,7 @@ void PostPetition(){
     HTTPClient http;
     
     /** SERVER API PATH **/
-    http.begin("http://192.168.1.39:3000/api/data/tambure");
+    http.begin(baseURL+"/api/data/"+dId);
     
     /*WE SET THE HEADERS FOR THE PETITION, THIS IS KEY TO HAVE A GOOD DATA CORRELATION BETWEEN THE DEVICE AND THE SERVER*/
     http.addHeader("Content-Type", "application/json; charset=utf-8"); 
@@ -109,7 +111,7 @@ String SetUpJson(){
    /**
      * JSON CONFIG TO SEND
     */ 
-    doc["dId"] = "tambure";       
+    doc["dId"] = "potenciometer";       
     variables["humedad"] = potValue;
     variables["temp"] = 29;
     variables["bulb"]= bulb;
