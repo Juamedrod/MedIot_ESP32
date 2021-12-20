@@ -50,7 +50,7 @@ void PostPetition(){
     HTTPClient http;
     
     /** SERVER API PATH **/
-    http.begin("http://192.168.1.39:3000/api/data/"+dId);
+    http.begin("https://mediot.herokuapp.com/api/data/"+dId);
     
     /*WE SET THE HEADERS FOR THE PETITION, THIS IS KEY TO HAVE A GOOD DATA CORRELATION BETWEEN THE DEVICE AND THE SERVER*/
     http.addHeader("Content-Type", "application/json; charset=utf-8"); 

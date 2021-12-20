@@ -9,10 +9,12 @@
 /* GLOBAL VARS */
 const char *ssid = "MOVISTAR_42BE";
 const char *password = "yR4reQ59TUn5eggk2ieq";
-String dId= "tempestira";
+String dId= "ledLights";
 String bulb="false";
 String bulb2="false";
 String bulb3="false";
+String baseURL="https://mediot.herokuapp.com";
+
 
 /*EXECUTED AT START*/
 void setup()
@@ -71,14 +73,14 @@ void loop()
     digitalWrite(LED3,LOW);
   }
   
-  delay(2000); 
+  delay(1000); 
 }
 
 void GetPetition(){
     /*Instantiate httpClient*/
     HTTPClient http;
   
-    http.begin("http://192.168.1.39:3000/api/data/boolean/"+dId+"/bulb");
+    http.begin(baseURL+"/api/data/boolean/"+dId+"/bulb");
     
     /*WE SET THE HEADERS FOR THE PETITION, THIS IS KEY TO HAVE A GOOD DATA CORRELATION BETWEEN THE DEVICE AND THE SERVER*/
     http.addHeader("Content-Type", "application/json; charset=utf-8"); 
@@ -104,7 +106,7 @@ void GetPetition2(){
     /*Instantiate httpClient*/
     HTTPClient http;
   
-    http.begin("http://192.168.1.39:3000/api/data/boolean/"+dId+"/bulb2");
+    http.begin(baseURL+"/api/data/boolean/"+dId+"/bulb2");
     
     /*WE SET THE HEADERS FOR THE PETITION, THIS IS KEY TO HAVE A GOOD DATA CORRELATION BETWEEN THE DEVICE AND THE SERVER*/
     http.addHeader("Content-Type", "application/json; charset=utf-8"); 
@@ -130,7 +132,7 @@ void GetPetition3(){
     /*Instantiate httpClient*/
     HTTPClient http;
   
-    http.begin("http://192.168.1.39:3000/api/data/boolean/"+dId+"/bulb3");
+    http.begin(baseURL+"/api/data/boolean/"+dId+"/bulb3");
     
     /*WE SET THE HEADERS FOR THE PETITION, THIS IS KEY TO HAVE A GOOD DATA CORRELATION BETWEEN THE DEVICE AND THE SERVER*/
     http.addHeader("Content-Type", "application/json; charset=utf-8"); 
